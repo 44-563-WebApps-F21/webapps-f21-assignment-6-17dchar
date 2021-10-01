@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>Pass Input</title>
+ </head>
+<body>
+
+<h1>Pass Phrase by Darek Charlet</h1>
+<h2>Getting input</h2>
+
+<form>
+    <label for="form1_phrase">What is the secret phrase? </label>
+    <input type ="password" id="form1_phrase" name="form1_phrase" value="Let Me In"> <br>
+
+    <label for="form1_check">Enter a phrase: </label>
+    <input type ="text" id="form1_check" name="form1_check" autofocus> <br>
+
+    <input type="button" name="form1_btn" onclick="processPhrase()" value="Check the phrase">
+</form>
+
+
+<p id="result">This text will be replaced</p>
+
+<script> 
+
+let correct = 0;
+let wrong = 0;
+
+function processPhrase (){
+    console.log("Getting form values")
+    phrase = document.getElementById("form1_phrase").value
+    check = document.getElementById("form1_check").value
+    
+    if(phrase == check){
+        correct++
+        alert("Access allowed")
+    }
+    else{
+        wrong++
+        alert("Access denied")
+    }
+
+    out = document.getElementById("result")
+    out.innerHTML = ("Correct = " + correct + " & Wrong = "+ wrong)
+}
+</script>
+
+</body>
+</html> 
