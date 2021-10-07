@@ -12,20 +12,48 @@
     <input type ="number" id="base" name="base" value=2 autofocus> <br>
 
     <label for="exponent">Enter an exponent </label>
-    <input type ="text" id="exponent" name="exponent"> <br>
+    <input type ="text" id="exponent" name="exponent" value=3> <br>
 
-    <input type="button" onclick="powers()" value="Compute">
+    <input type="button" onclick="powers()" value="Compute Powers"><br>
 </form>
 
+<p>Or select operator: </p>
 
-<p id="result">This text will be replaced </p>
+<form>
+    <input type="radio" id="plus" value="plus" onclick="processRadio()">
+    <label for="plus">+</label><br>
+
+    <input type="radio" id="minus" value="minus" onclick="processRadio()">
+    <label for="minus">-</label><br>
+
+    <input type="radio" id="times" value="times" onclick="processRadio()">
+    <label for="times">*</label><br>
+
+    <input type="radio" id="divide" value="divide" onclick="processRadio()">
+    <label for="divide">/</label><br>
+</form>
+
+<p id="result">This text will be replaced</p>
 
 <script> 
 
+function processRadio(){
+    let operand1 = document.getElementById("base").value;
+    let operand2 = document.getElementById("exponent").value;
+    let result = 0;
+
+    if(document.getElementById("plus").checked){result = Number(operand1) + Number(operand2);}
+    else if(document.getElementById("minus").checked){result = operand1 - operand2;}
+    else if(document.getElementById("times").checked){result = operand1 * operand2;}
+    else if(document.getElementById("divide").checked){result = operand1 / operand2}
+
+    document.getElementById("result").innerHTML = "Result is: " + result;
+}
+
 function powers(){
-    base = document.getElementById("base").value;
-    exponent = document.getElementById("exponent").value;
-    result = "";
+    let base = document.getElementById("base").value;
+    let exponent = document.getElementById("exponent").value;
+    let result = "";
 
     for(let i=1; i <= exponent; i++){
         result = (result + (Math.pow(base, i) + " "));
