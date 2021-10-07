@@ -19,7 +19,18 @@
     <label for="gps">gps</label> <br>
 
     <input type="button" value="Order a car" onclick="orderCar()">
+</form>
 
+<hr>
+
+<form>
+    <label for="property">Enter a property</label>
+    <input type="text" id="property" value="color">
+
+    <label for="value">Enter a value</label>
+    <input type="text" id="value">
+
+    <input type="button" value="Update the car" onclick="updateCar()">
 </form>
 
 <p id="result">This text will be replaced.</p>
@@ -27,6 +38,15 @@
 <script> 
 
 let my_car = {};
+
+function updateCar(){
+    let property = document.getElementById("property").value;
+    let value = document.getElementById("value").value;
+
+    my_car[property] = value;
+
+    document.getElementById("result").innerHTML = JSON.stringify(my_car, null, 1);
+}
 
 function orderCar(){
     my_car = {};
@@ -38,7 +58,7 @@ function orderCar(){
     if(document.getElementById("gps").checked){my_car.gps = true;}
         else{my_car.gps = false;}
     
-    document.getElementById("result").innerHTML = my_car;
+    document.getElementById("result").innerHTML = JSON.stringify(my_car, null, 1);
 }
 
 </script>
